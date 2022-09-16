@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.tbc_shemajamebeli_8.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_ownedItemsFragment"
+            app:destination="@id/ownedItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownedItemsFragment"
+        android:name="com.example.tbc_shemajamebeli_8.OwnedItemsFragment"
+        android:label="fragment_owned_items"
+        tools:layout="@layout/fragment_owned_items" />
+</navigation>
