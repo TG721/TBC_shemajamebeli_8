@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tbc_shemajamebeli_8.R
-import com.example.tbc_shemajamebeli_8.data.model.DPO
+import com.example.tbc_shemajamebeli_8.data.model.Content
+
 import com.example.tbc_shemajamebeli_8.databinding.ItemBinding
 import com.example.tbc_shemajamebeli_8.domain.RecyclerViewInterface
 
-class ItemAdapter(val recyclerViewInterface: RecyclerViewInterface) : ListAdapter<DPO.Content, ItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
+class ItemAdapter(val recyclerViewInterface: RecyclerViewInterface) : ListAdapter<Content, ItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
     inner class ItemViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private val buyButton = binding.buyButton
@@ -24,12 +25,14 @@ class ItemAdapter(val recyclerViewInterface: RecyclerViewInterface) : ListAdapte
                 if (pos != RecyclerView.NO_POSITION) {
                     recyclerViewInterface.onFavoriteButtonClick(pos)
                 }
+            }
                 buyButton.setOnClickListener {
+                    val pos = bindingAdapterPosition
                     if (pos != RecyclerView.NO_POSITION) {
                         recyclerViewInterface.onBuyButtonClick(pos)
                     }
                 }
-            }
+
                 val source = getItem(absoluteAdapterPosition)
                 binding.itemCost.text  = source.price
                 binding.itemName.text = source.title
@@ -54,11 +57,11 @@ class ItemAdapter(val recyclerViewInterface: RecyclerViewInterface) : ListAdapte
 
 }
 
-private class ItemDiffCallback : DiffUtil.ItemCallback<DPO.Content>() {
-    override fun areItemsTheSame(oldItem: DPO.Content, newItem: DPO.Content): Boolean =
+private class ItemDiffCallback : DiffUtil.ItemCallback<Content>() {
+    override fun areItemsTheSame(oldItem: Content, newItem: Content): Boolean =
         oldItem.title == newItem.title
 
-    override fun areContentsTheSame(oldItem: DPO.Content, newItem: DPO.Content): Boolean =
+    override fun areContentsTheSame(oldItem: Content, newItem: Content): Boolean =
         oldItem == newItem
 
 }

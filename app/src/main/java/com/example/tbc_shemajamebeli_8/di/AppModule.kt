@@ -2,6 +2,7 @@ package com.example.tbc_shemajamebeli_8.di
 
 import android.content.Context
 import com.example.tbc_shemajamebeli_8.app.BaseApplication
+import com.example.tbc_shemajamebeli_8.data.remote.Client
 import com.example.tbc_shemajamebeli_8.data.remote.ClothesApi
 import dagger.Module
 import dagger.Provides
@@ -17,20 +18,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Singleton
+
     @Provides
-    fun provideApplication(@ApplicationContext app: Context): BaseApplication {
-        return app as BaseApplication
+    @Singleton
+    fun provideRetrofit(@ApplicationContext context: Context): Retrofit {
+        return  Retrofit.Builder()
+            .baseUrl("https://run.mocky.io/")
+            .client(Client.getInstance(context))
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
-
     @Provides
     @Singleton
-    fun provideMyApi(): ClothesApi {
-        return  Retrofit.Builder()
-            .baseUrl("https://run.mocky.io/v3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(ClothesApi::class.java)
+    fun provideMyApi(retrofit: Retrofit): ClothesApi{
+        return retrofit.create(ClothesApi::class.java)
     }
 
 }
