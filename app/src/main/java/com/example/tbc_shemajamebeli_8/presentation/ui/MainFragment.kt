@@ -58,9 +58,9 @@ class MainFragment : RecyclerViewInterface, BaseFragment<FragmentMainBinding>(
     }
 
     // we are not going to implement it
-    override fun onFavoriteButtonClick(Position: Int) {
-        TODO("Not yet implemented")
-    }
+//    override fun onFavoriteButtonClick(Position: Int) {
+//        TODO("Not yet implemented")
+//    }
 
     override fun onBuyButtonClick(Position: Int) {
         val myToast: Toast = Toast.makeText(requireContext(), "Item bought!", Toast.LENGTH_LONG)

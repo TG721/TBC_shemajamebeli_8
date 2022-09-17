@@ -20,12 +20,12 @@ class ItemAdapter(val recyclerViewInterface: RecyclerViewInterface) : ListAdapte
 
         fun bind() {
             //we are not making this button functional but could change in future
-            favoriteButton.setOnClickListener {
-                val pos = bindingAdapterPosition
-                if (pos != RecyclerView.NO_POSITION) {
-                    recyclerViewInterface.onFavoriteButtonClick(pos)
-                }
-            }
+//            favoriteButton.setOnClickListener {
+//                val pos = bindingAdapterPosition
+//                if (pos != RecyclerView.NO_POSITION) {
+//                    recyclerViewInterface.onFavoriteButtonClick(pos)
+//                }
+//            }
                 buyButton.setOnClickListener {
                     val pos = bindingAdapterPosition
                     if (pos != RecyclerView.NO_POSITION) {
